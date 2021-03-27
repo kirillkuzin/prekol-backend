@@ -4,9 +4,10 @@ from databases import Database
 import sqlalchemy as sa
 
 from tables import cities, places, user_places
+from config import DATABASE_URL
 
 
-db = Database('sqlite:///data.db')
+db = Database(DATABASE_URL)
 
 
 async def get_cities() -> List[Mapping]:

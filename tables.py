@@ -1,8 +1,10 @@
 import sqlalchemy as sa
 
+# from config import DATABASE_URL
+
 
 metadata = sa.MetaData()
-engine = sa.create_engine('sqlite:///data.db')
+# engine = sa.create_engine(DATABASE_URL)
 
 
 cities = sa.Table(
@@ -34,4 +36,4 @@ user_places = sa.Table(
     sa.Column('place_id', sa.Integer, sa.ForeignKey('places.id'))
 )
 
-metadata.create_all(engine)
+# metadata.create_all(engine)
