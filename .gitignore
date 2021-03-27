@@ -141,3 +141,6 @@ cython_debug/
 
 alembic/
 alembic.ini
+
+.DS_Store
+data.csv

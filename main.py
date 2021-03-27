@@ -46,24 +46,27 @@ async def save_user_places(username: str, places_ids: List[int]):
     await data.save_user_places(username, places_ids)
 
 
-@app.post('/routes/{username}', response_model=List[Place], status_code=201)
-async def get_route(username: str, places_ids: List[int]):
+@app.post('/routes', response_model=List[Place], status_code=201)
+async def get_route(places_ids: List[int]):
     places = await data.get_places_by_ids(places_ids)
+
+    if len(places) <= 1:
+        return []
+
     sources = np.array([
         [16.366461, 48.200127],
         [16.366182, 48.200581],
         [16.365774, 48.200504],
         [16.367483, 48.198936]
     ])
-    # sources = np.array([])
-    # for place in places:
-    #     print(place['lat'])
-    #     print(place['lon'])
-    #     np.append(sources, [place['lat'], place['lon']])
-    print(sources)
     distance_matrix = great_circle_distance_matrix(sources)
     print(distance_matrix)
     permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
     print(permutation)
     print(distance)
     return get_mocked_places()
+
+
+@app.get('/news/{city_id}')
+async def get_news(city_id: int):
+    pass

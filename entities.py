@@ -18,3 +18,8 @@ class City(BaseModel):
     id: int
     title: str
     image_url: str
+
+
+class News(BaseModel):
+    id: int
+    title: str

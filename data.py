@@ -3,9 +3,9 @@ from typing import List, Mapping, Optional
 from databases import Database
 import sqlalchemy as sa
 
+from entities import Place
 from tables import cities, places, user_places
 from config import DATABASE_URL
-
 
 db = Database(DATABASE_URL)
 
@@ -43,3 +43,20 @@ async def save_user_places(username: str, places_ids: List[int]):
         query = user_places.insert().values(username=username,
                                             place_id=place_id)
         await db.execute(query)
+
+
+async def save_place(title: str,
+                     description: str,
+                     place_type: str,
+                     lon: float,
+                     lat: float,
+                     image_url: str,
+                     city_id: int):
+    query = places.insert().values(title=title,
+                                   description=description,
+                                   type=place_type,
+                                   lon=lon,
+                                   lat=lat,
+                                   image_url=image_url,
+                                   city_id=city_id)
+    await db.execute(query)
