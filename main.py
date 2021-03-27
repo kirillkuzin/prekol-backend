@@ -24,6 +24,11 @@ async def get_city_places(username: str, city_id: int):
     return get_mocked_places()
 
 
-@app.post('/places/{username}', response_model=List[Place])
-async def get_user_places(username: str, data: List[int]):
+@app.post('/places/{username}', status_code=201)
+async def save_user_places(username: str, data: List[int]):
+    return
+
+
+@app.post('/routes/{username}', response_model=List[Place])
+async def get_route(username: str, data: List[int]):
     return get_mocked_places()
