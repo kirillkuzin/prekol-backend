@@ -1,6 +1,5 @@
 import csv
 import asyncio
-import time
 
 from tqdm import tqdm
 

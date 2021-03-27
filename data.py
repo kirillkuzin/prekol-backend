@@ -25,10 +25,9 @@ async def get_places_by_ids(places_ids: List[int]) -> List[Mapping]:
     return await db.fetch_all(query)
 
 
-async def get_user_places(username: str, city_id: int) -> List[Mapping]:
+async def get_user_places(username: str) -> List[Mapping]:
     query = sa.select([places])
-    query = query.where(sa.and_(user_places.c.username == username,
-                                places.c.city_id == city_id))
+    query = query.where(user_places.c.username == username)
     join_clause = user_places.join(
         places,
         onclause=(user_places.c.place_id == places.c.id)
