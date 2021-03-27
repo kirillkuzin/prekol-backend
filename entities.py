@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class Place(BaseModel):
-    place_id: int
+    id: int
     title: str
     type: str
     description: Optional[str]
@@ -15,6 +15,6 @@ class Place(BaseModel):
 
 
 class City(BaseModel):
-    city_id: int
+    id: int
     title: str
     image_url: str

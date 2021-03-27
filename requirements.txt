@@ -1,2 +1,6 @@
 fastapi==0.63.0
 uvicorn==0.13.4
+environs==9.3.1
+databases==0.4.3
+aiosqlite==0.17.0
+python-tsp==0.2.0
