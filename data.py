@@ -16,7 +16,7 @@ async def get_cities() -> List[Mapping]:
 
 
 async def get_places() -> List[Mapping]:
-    query = places.select()
+    query = places.select().limit(50)
     return await db.fetch_all(query)
 
 
