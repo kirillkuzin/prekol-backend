@@ -25,8 +25,8 @@ async def main():
                     title = row['name']
                     description = row['wikipedia_extracts']
                     place_type = row['category']
-                    lon = float(row['lat'])
-                    lat = float(row['lon'])
+                    lon = float(row['longitude'])
+                    lat = float(row['latitude'])
                     image_url = row['clear_link']
                     city_id = cities[row['capital']]
                     await save_place(title=title,
